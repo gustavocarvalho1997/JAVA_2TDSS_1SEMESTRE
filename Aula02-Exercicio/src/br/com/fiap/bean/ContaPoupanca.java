@@ -37,11 +37,12 @@ public final class ContaPoupanca extends Conta implements ContaInvestimento {
             throw new IllegalArgumentException("Saldo insuficiente");
         } else {
             saldo -= valor;
+            saldo -= taxa;
         }
     }
 
     @Override
     public double calcularRetornoInvestimento() {
-        return saldo * RENDIMENTO;
+        return (saldo * RENDIMENTO);
     }
 }//CLASS

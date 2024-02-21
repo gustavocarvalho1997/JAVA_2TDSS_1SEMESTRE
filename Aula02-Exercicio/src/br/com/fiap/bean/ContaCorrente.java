@@ -26,7 +26,7 @@ public final class ContaCorrente extends Conta{
         saldo += valor;
     }//depositar
     @Override
-    public void retirar(double valor) {
+    public void retirar(double valor) throws IllegalArgumentException{
         if(tipo.equals(TipoConta.COMUM) && valor > saldo) {
             throw new IllegalArgumentException("Saldo insuficiente");
         } else {

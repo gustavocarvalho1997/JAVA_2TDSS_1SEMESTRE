@@ -5,8 +5,16 @@ public class Churros extends Produto {
     //Criar o atributo sabor
     private String sabor;
 
+    private TipoChurros tipo;
+
     //Construtores
     public Churros() {
+    }
+
+    public Churros(Integer id, String nome, Double valor, String sabor, TipoChurros tipo) {
+        super(id, nome, valor);
+        this.sabor = sabor;
+        this.tipo = tipo;
     }
 
     public Churros(Integer id, String nome, Double valor, String sabor) {
@@ -30,9 +38,16 @@ public class Churros extends Produto {
         return sabor;
     }
 
+    public TipoChurros getTipo() {
+        return tipo;
+    }
+
     public void setSabor(String sabor) {
         this.sabor = sabor;
     }
 
+    public void setTipo(TipoChurros tipo) {
+        this.tipo = tipo;
+    }
 
 }

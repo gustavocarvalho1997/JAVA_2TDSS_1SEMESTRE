@@ -2,6 +2,7 @@ package br.com.fiap.revisao.view;
 
 import br.com.fiap.revisao.model.Churros;
 import br.com.fiap.revisao.model.Produto;
+import br.com.fiap.revisao.model.TipoChurros;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +18,15 @@ public class Main {
 
         valor = churros.calcularValorFinal("CHURROSTDS");
         System.out.println(valor);
+
+        //TODO SETAR O TIPO DO CHURROS
+        churros.setTipo(TipoChurros.SALGADO);
+        //TODO VALIDAR SE O CHURROS É SALGADO
+        if (churros.getTipo() == TipoChurros.SALGADO){
+            System.out.println("O churros é salgado");
+        } else {
+            System.out.println("O churros não é salgado");
+        }
 
     }
 }

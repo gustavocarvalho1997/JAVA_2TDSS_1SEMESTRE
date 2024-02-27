@@ -1,5 +1,3 @@
-package br.com.fiap.test;
-
 import br.com.fiap.bean.ContaCorrente;
 import br.com.fiap.bean.TipoConta;
 import org.junit.Test;

@@ -1,5 +1,3 @@
-package br.com.fiap.test;
-
 import br.com.fiap.bean.ContaPoupanca;
 import org.junit.Test;
 

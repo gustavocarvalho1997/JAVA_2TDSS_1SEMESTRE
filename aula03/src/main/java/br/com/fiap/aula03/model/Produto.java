@@ -1,6 +1,6 @@
 package br.com.fiap.aula03.model;
 
-import br.com.fiap.aula03.dto.CadastroMercadoDto;
+import br.com.fiap.aula03.dto.CadastroProdutoDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -14,18 +14,21 @@ import lombok.Setter;
 @AllArgsConstructor @NoArgsConstructor
 
 @Entity
-@Table(name = "TB_MERCADO")
-public class Mercado {
+@Table(name = "JAVA_TB_PRODUTO")
+public class Produto {
 
     @Id
     @GeneratedValue
     private Integer id;
     private String nome;
-    private CategoriaMercado categoria;
+    private Double valor;
+    private Integer quantidade;
 
-    //Cria um construtor que recebe o dto para cadastro
-    public Mercado(CadastroMercadoDto mercadoDto) {
-        nome = mercadoDto.nome();
-        categoria = mercadoDto.categoria();
+    // Cria um construtor que recebe o dto para cadastro
+    public Produto(CadastroProdutoDto produtoDto) {
+        this.nome = produtoDto.nome();
+        this.valor = produtoDto.valor();
+        this.quantidade = produtoDto.quantidade();
     }
+
 }

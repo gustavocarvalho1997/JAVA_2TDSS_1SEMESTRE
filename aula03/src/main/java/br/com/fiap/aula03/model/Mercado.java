@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor @NoArgsConstructor
 
 @Entity
-@Table(name = "TB_MERCADO")
+@Table(name = "JAVA_TB_MERCADO")
 public class Mercado {
 
     @Id

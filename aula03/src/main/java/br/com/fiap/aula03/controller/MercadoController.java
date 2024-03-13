@@ -2,15 +2,18 @@ package br.com.fiap.aula03.controller;
 
 import br.com.fiap.aula03.dto.CadastroMercadoDto;
 import br.com.fiap.aula03.dto.DetalhesMercadoDto;
-import br.com.fiap.aula03.model.CategoriaMercado;
+import br.com.fiap.aula03.dto.ListagemMercadoDTO;
 import br.com.fiap.aula03.model.Mercado;
 import br.com.fiap.aula03.repository.MercadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/mercados")
@@ -30,8 +33,15 @@ public class MercadoController {
     }
 
     @GetMapping
-    public Mercado get(){
-        return new Mercado(1,"Atacadão", CategoriaMercado.HIPER);
+    public ResponseEntity<List<ListagemMercadoDTO>> listar(Pageable paginacao) {
+        var lista = mercadoRepository.findAll(paginacao).stream().map(ListagemMercadoDTO::new).toList();
+        return ResponseEntity.ok(lista);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<DetalhesMercadoDto> pesquisar(@PathVariable("id") Integer id) {
+        var mercado = mercadoRepository.getReferenceById(id);
+        return ResponseEntity.ok(new DetalhesMercadoDto(mercado));
     }
 
 }

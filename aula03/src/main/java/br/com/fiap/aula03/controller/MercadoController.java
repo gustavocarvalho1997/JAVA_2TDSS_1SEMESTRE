@@ -1,5 +1,6 @@
 package br.com.fiap.aula03.controller;
 
+import br.com.fiap.aula03.dto.AtualizacaoMercadoDTO;
 import br.com.fiap.aula03.dto.CadastroMercadoDto;
 import br.com.fiap.aula03.dto.DetalhesMercadoDto;
 import br.com.fiap.aula03.dto.ListagemMercadoDTO;
@@ -41,6 +42,15 @@ public class MercadoController {
     @GetMapping("{id}")
     public ResponseEntity<DetalhesMercadoDto> pesquisar(@PathVariable("id") Integer id) {
         var mercado = mercadoRepository.getReferenceById(id);
+        return ResponseEntity.ok(new DetalhesMercadoDto(mercado));
+    }
+
+    @PutMapping("{id}")
+    @Transactional
+    public ResponseEntity<DetalhesMercadoDto> atualizar(@PathVariable("id") Integer id,
+                                                       @RequestBody AtualizacaoMercadoDTO dto) {
+        var mercado = mercadoRepository.getReferenceById(id);
+        mercado.atualizarInformacoes(dto);
         return ResponseEntity.ok(new DetalhesMercadoDto(mercado));
     }
 

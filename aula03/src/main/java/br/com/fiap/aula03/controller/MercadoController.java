@@ -1,9 +1,9 @@
 package br.com.fiap.aula03.controller;
 
-import br.com.fiap.aula03.dto.AtualizacaoMercadoDTO;
-import br.com.fiap.aula03.dto.CadastroMercadoDto;
-import br.com.fiap.aula03.dto.DetalhesMercadoDto;
-import br.com.fiap.aula03.dto.ListagemMercadoDTO;
+import br.com.fiap.aula03.dto.mercado.AtualizacaoMercadoDTO;
+import br.com.fiap.aula03.dto.mercado.CadastroMercadoDto;
+import br.com.fiap.aula03.dto.mercado.DetalhesMercadoDto;
+import br.com.fiap.aula03.dto.mercado.ListagemMercadoDTO;
 import br.com.fiap.aula03.model.Mercado;
 import br.com.fiap.aula03.repository.MercadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;

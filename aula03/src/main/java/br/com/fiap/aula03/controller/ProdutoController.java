@@ -1,10 +1,12 @@
 package br.com.fiap.aula03.controller;
 
-import br.com.fiap.aula03.dto.CadastroProdutoDto;
-import br.com.fiap.aula03.dto.DetalhesProdutoDto;
+import br.com.fiap.aula03.dto.produto.CadastroProdutoDto;
+import br.com.fiap.aula03.dto.produto.DetalhesProdutoDto;
+import br.com.fiap.aula03.dto.produto.ListagemProdutoDTO;
 import br.com.fiap.aula03.model.Produto;
 import br.com.fiap.aula03.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,21 @@ public class ProdutoController {
     @Autowired
     private ProdutoRepository produtoRepository;
 
+    //GET
+    @GetMapping
+    public ResponseEntity<List<ListagemProdutoDTO>> listar(Pageable paginacao){
+        var lista = produtoRepository.findAll(paginacao).stream().map(ListagemProdutoDTO::new).toList();
+        return ResponseEntity.ok(lista);
+    }//GET
+
+    //GET ID
+    @GetMapping("{id}")
+    public ResponseEntity<DetalhesProdutoDto> pesquisar(@PathVariable("id") Integer id) {
+        var produto = produtoRepository.getReferenceById(id);
+        return ResponseEntity.ok(new DetalhesProdutoDto(produto));
+    }//GET ID
+
+
     //POST
     @PostMapping
     @Transactional
@@ -28,5 +45,4 @@ public class ProdutoController {
         var url = uri.path("/produtos/{id}").buildAndExpand(produto.getId()).toUri();
         return ResponseEntity.created(url).body(new DetalhesProdutoDto(produto));
     }//POST
-
 }

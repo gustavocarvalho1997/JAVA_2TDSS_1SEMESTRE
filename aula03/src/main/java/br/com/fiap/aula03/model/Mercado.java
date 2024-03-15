@@ -1,7 +1,7 @@
 package br.com.fiap.aula03.model;
 
-import br.com.fiap.aula03.dto.AtualizacaoMercadoDTO;
-import br.com.fiap.aula03.dto.CadastroMercadoDto;
+import br.com.fiap.aula03.dto.mercado.AtualizacaoMercadoDTO;
+import br.com.fiap.aula03.dto.mercado.CadastroMercadoDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

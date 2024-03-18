@@ -55,4 +55,13 @@ public class ProdutoController {
         produto.atualizarInformacoes(dto);
         return ResponseEntity.ok(new DetalhesProdutoDto(produto));
     }//PUT
+
+    //DELETE
+    @DeleteMapping("{id}")
+    @Transactional
+    public ResponseEntity<Void> remover(@PathVariable("id") Integer id) {
+        produtoRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }//DELETE
+
 }

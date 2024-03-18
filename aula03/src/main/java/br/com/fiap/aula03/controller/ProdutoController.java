@@ -1,5 +1,6 @@
 package br.com.fiap.aula03.controller;
 
+import br.com.fiap.aula03.dto.produto.AtualizacaoProdutoDTO;
 import br.com.fiap.aula03.dto.produto.CadastroProdutoDto;
 import br.com.fiap.aula03.dto.produto.DetalhesProdutoDto;
 import br.com.fiap.aula03.dto.produto.ListagemProdutoDTO;
@@ -45,4 +46,13 @@ public class ProdutoController {
         var url = uri.path("/produtos/{id}").buildAndExpand(produto.getId()).toUri();
         return ResponseEntity.created(url).body(new DetalhesProdutoDto(produto));
     }//POST
+
+    //PUT
+    @PutMapping("{id}")
+    @Transactional
+    public ResponseEntity<DetalhesProdutoDto> atualizar(@PathVariable("id") Integer id, @RequestBody AtualizacaoProdutoDTO dto) {
+        var produto = produtoRepository.getReferenceById(id);
+        produto.atualizarInformacoes(dto);
+        return ResponseEntity.ok(new DetalhesProdutoDto(produto));
+    }//PUT
 }

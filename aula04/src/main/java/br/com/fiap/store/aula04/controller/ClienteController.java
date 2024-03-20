@@ -25,6 +25,9 @@ public class ClienteController {
     @PostMapping
     @Transactional
     public ResponseEntity<DetalhesClienteDTO> cadastrar(@RequestBody CadastroClienteDTO dto, UriComponentsBuilder uri) {
-        var cliente = new Cliente()
+        var cliente = new Cliente(dto);
+        clienteRepository.save(cliente);
+        var url = uri.path("/clientes/{id}").buildAndExpand(cliente.getCodigo()).toUri();
+        return ResponseEntity.created(url).body(new DetalhesClienteDTO(cliente));
     }
 }//CLASS

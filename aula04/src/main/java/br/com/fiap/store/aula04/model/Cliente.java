@@ -1,5 +1,6 @@
 package br.com.fiap.store.aula04.model;
 
+import br.com.fiap.store.aula04.dto.CadastroClienteDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,4 +38,13 @@ public class Cliente {
     private  String token;
     @Column(name = "nr_pontos", precision = 10)
     private Integer pontos;
+
+    // Cria um construtor que recebe o dto para cadastro
+    public Cliente(CadastroClienteDTO dto) {
+        this.nome = dto.nome();
+        this.cpf = dto.cpf();
+        this.dataNascimento = dto.dataNascimento();
+        this.categoria = dto.categoria();
+        this.pontos = dto.pontos();
+    }//CONSTRUTOR
 }//CLASS

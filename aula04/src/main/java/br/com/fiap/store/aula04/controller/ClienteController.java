@@ -54,4 +54,12 @@ public class ClienteController {
         cliente.atualizarInformacoes(dto);
         return ResponseEntity.ok(new DetalhesClienteDTO(cliente));
     }
+
+    // DELETE
+    @DeleteMapping("/{codigo}")
+    @Transactional
+    public ResponseEntity<Void> remover(@PathVariable("codigo") Long codigo) {
+        clienteRepository.deleteById(codigo);
+        return ResponseEntity.noContent().build();
+    }
 }//CLASS

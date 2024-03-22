@@ -1,5 +1,6 @@
 package br.com.fiap.store.aula04.controller;
 
+import br.com.fiap.store.aula04.dto.AtualizacaoClienteDTO;
 import br.com.fiap.store.aula04.dto.CadastroClienteDTO;
 import br.com.fiap.store.aula04.dto.DetalhesClienteDTO;
 import br.com.fiap.store.aula04.dto.ListagemClienteDTO;
@@ -45,5 +46,12 @@ public class ClienteController {
         return ResponseEntity.ok(new DetalhesClienteDTO(cliente));
     }
 
-
+    // PUT
+    @PutMapping("/{codigo}")
+    @Transactional
+    public ResponseEntity<DetalhesClienteDTO> atualizar(@PathVariable("codigo") Long codigo, @RequestBody AtualizacaoClienteDTO dto){
+        var cliente = clienteRepository.getReferenceById(codigo);
+        cliente.atualizarInformacoes(dto);
+        return ResponseEntity.ok(new DetalhesClienteDTO(cliente));
+    }
 }//CLASS

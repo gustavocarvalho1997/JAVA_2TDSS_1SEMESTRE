@@ -1,5 +1,6 @@
 package br.com.fiap.store.aula04.model;
 
+import br.com.fiap.store.aula04.dto.AtualizacaoClienteDTO;
 import br.com.fiap.store.aula04.dto.CadastroClienteDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -46,4 +47,14 @@ public class Cliente {
         this.dataNascimento = dto.dataNascimento();
         this.categoria = dto.categoria();
     }//CONSTRUTOR
+
+    // Atualiza os dados do cliente
+    public void atualizarInformacoes(AtualizacaoClienteDTO dto) {
+        if(dto.nome() != null) {
+            this.nome = dto.nome();
+        }
+        if(dto.categoria() != null) {
+            this.categoria = dto.categoria();
+        }
+    }
 }//CLASS

@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -23,7 +24,7 @@ public class Produto {
     @Column(name = "nm_produto", nullable = false, length = 50)
     private String nome;
     @Column(name = "vl_produto", nullable = false, precision = 9, scale = 2)
-    private Double valor;
+    private BigDecimal valor;
     @Column(name = "nr_estoque", precision = 9)
     private Integer estoque;
     @Column(name = "st_frete_gratis")

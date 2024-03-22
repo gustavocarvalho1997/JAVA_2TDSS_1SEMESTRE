@@ -45,6 +45,5 @@ public class Cliente {
         this.cpf = dto.cpf();
         this.dataNascimento = dto.dataNascimento();
         this.categoria = dto.categoria();
-        this.pontos = dto.pontos();
     }//CONSTRUTOR
 }//CLASS

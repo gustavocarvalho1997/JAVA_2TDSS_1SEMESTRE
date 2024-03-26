@@ -1,5 +1,6 @@
 package br.com.fiap.store.aula04.model;
 
+import br.com.fiap.store.aula04.dto.produto.AtualizacaoProdutoDTO;
 import br.com.fiap.store.aula04.dto.produto.CadastroProdutoDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -49,4 +50,16 @@ public class Produto {
         this.fabricacao = dto.fabricacao();
         this.estado = dto.estado();
     }// CONSTRUTOR
+
+    public void atualizarInformacoes(AtualizacaoProdutoDTO dto ){
+        if(dto.valor() != null){
+            this.valor = dto.valor();
+        }
+        if(dto.estoque() != null){
+            this.estoque = dto.estoque();
+        }
+        if(dto.estado() != null){
+            this.estado = dto.estado();
+        }
+    }
 }// CLASS

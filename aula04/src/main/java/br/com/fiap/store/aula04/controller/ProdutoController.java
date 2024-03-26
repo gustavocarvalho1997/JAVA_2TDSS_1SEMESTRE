@@ -1,5 +1,6 @@
 package br.com.fiap.store.aula04.controller;
 
+import br.com.fiap.store.aula04.dto.produto.AtualizacaoProdutoDTO;
 import br.com.fiap.store.aula04.dto.produto.CadastroProdutoDTO;
 import br.com.fiap.store.aula04.dto.produto.DetalhesProdutoDTO;
 import br.com.fiap.store.aula04.dto.produto.ListagemProdutoDTO;
@@ -42,6 +43,15 @@ public class ProdutoController {
     @GetMapping("/{codigo}")
     public ResponseEntity<DetalhesProdutoDTO> pesquisar(@PathVariable("codigo") Long codigo) {
         var produto = produtoRepository.getReferenceById(codigo);
+        return ResponseEntity.ok(new DetalhesProdutoDTO(produto));
+    }
+
+    // PUT
+    @PutMapping("/{codigo}")
+    @Transactional
+    public ResponseEntity<DetalhesProdutoDTO> atualizar(@PathVariable("codigo") Long codigo, @RequestBody AtualizacaoProdutoDTO dto) {
+        var produto = produtoRepository.getReferenceById(codigo);
+        produto.atualizarInformacoes(dto);
         return ResponseEntity.ok(new DetalhesProdutoDTO(produto));
     }
 }

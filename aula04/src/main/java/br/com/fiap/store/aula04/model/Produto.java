@@ -1,5 +1,6 @@
 package br.com.fiap.store.aula04.model;
 
+import br.com.fiap.store.aula04.dto.produto.CadastroProdutoDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,4 +40,13 @@ public class Produto {
     private EstadoProduto estado;
     @Transient
     private Double precoComDesconto;
+
+    public Produto(CadastroProdutoDTO dto){
+        this.nome = dto.nome();
+        this.valor = dto.valor();
+        this.estoque = dto.estoque();
+        this.freteGratis = dto.freteGratis();
+        this.fabricacao = dto.fabricacao();
+        this.estado = dto.estado();
+    }// CONSTRUTOR
 }// CLASS

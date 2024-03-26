@@ -1,9 +1,8 @@
 package br.com.fiap.store.aula04.model;
 
-import br.com.fiap.store.aula04.dto.AtualizacaoClienteDTO;
-import br.com.fiap.store.aula04.dto.CadastroClienteDTO;
+import br.com.fiap.store.aula04.dto.cliente.AtualizacaoClienteDTO;
+import br.com.fiap.store.aula04.dto.cliente.CadastroClienteDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

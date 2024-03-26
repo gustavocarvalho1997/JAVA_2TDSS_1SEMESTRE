@@ -1,9 +1,9 @@
 package br.com.fiap.store.aula04.controller;
 
-import br.com.fiap.store.aula04.dto.AtualizacaoClienteDTO;
-import br.com.fiap.store.aula04.dto.CadastroClienteDTO;
-import br.com.fiap.store.aula04.dto.DetalhesClienteDTO;
-import br.com.fiap.store.aula04.dto.ListagemClienteDTO;
+import br.com.fiap.store.aula04.dto.cliente.AtualizacaoClienteDTO;
+import br.com.fiap.store.aula04.dto.cliente.CadastroClienteDTO;
+import br.com.fiap.store.aula04.dto.cliente.DetalhesClienteDTO;
+import br.com.fiap.store.aula04.dto.cliente.ListagemClienteDTO;
 import br.com.fiap.store.aula04.model.Cliente;
 import br.com.fiap.store.aula04.repository.ClienteRepository;
 import jakarta.transaction.Transactional;

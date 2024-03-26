@@ -37,4 +37,11 @@ public class ProdutoController {
         var lista = produtoRepository.findAll(paginacao).stream().map(ListagemProdutoDTO::new).toList();
         return ResponseEntity.ok(lista);
     }
+
+    // GET by id
+    @GetMapping("/{codigo}")
+    public ResponseEntity<DetalhesProdutoDTO> pesquisar(@PathVariable("codigo") Long codigo) {
+        var produto = produtoRepository.getReferenceById(codigo);
+        return ResponseEntity.ok(new DetalhesProdutoDTO(produto));
+    }
 }

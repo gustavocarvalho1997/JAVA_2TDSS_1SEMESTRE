@@ -54,4 +54,12 @@ public class ProdutoController {
         produto.atualizarInformacoes(dto);
         return ResponseEntity.ok(new DetalhesProdutoDTO(produto));
     }
+
+    // DELETE
+    @DeleteMapping("/{codigo}")
+    @Transactional
+    public ResponseEntity<Void> remover(@PathVariable("codigo") Long codigo) {
+        produtoRepository.deleteById(codigo);
+        return ResponseEntity.noContent().build();
+    }
 }

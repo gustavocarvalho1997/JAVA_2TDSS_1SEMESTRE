@@ -11,6 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -38,6 +39,8 @@ public class Cliente {
     private  String token;
     @Column(name = "nr_pontos", precision = 10)
     private Integer pontos;
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos;
 
     // Cria um construtor que recebe o dto para cadastro
     public Cliente(CadastroClienteDTO dto) {

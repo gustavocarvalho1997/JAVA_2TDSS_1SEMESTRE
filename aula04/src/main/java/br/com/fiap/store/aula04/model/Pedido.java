@@ -9,6 +9,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -27,8 +29,17 @@ public class Pedido {
     private LocalDateTime data;
     // cascade - realiza as ações em cascata, ou seja, se cadastrar/alterar/excluir o pedido, a nota fiscal também  pode sofrer a mesma alteração
     @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)
-    private NotaFiscal nf;
-    @ManyToOne
+    private NotaFiscal notaFiscal;
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "cd_pedido")
     private Cliente cliente;
+
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<ProdutoPedido> itens = new ArrayList<>();
+
+    // Método para setar a FK  na tabela ProdutoPedido
+    public void adicionarItem(ProdutoPedido item) {
+        itens.add(item);
+        item.setPedido(this);
+    }//ADICIONAR ITEM
 }

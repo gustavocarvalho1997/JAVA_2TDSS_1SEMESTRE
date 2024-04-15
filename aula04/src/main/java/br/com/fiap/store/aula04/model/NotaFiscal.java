@@ -25,7 +25,9 @@ public class NotaFiscal {
     @Column(name = "dt_nota_fiscal")
     @CreatedDate
     private LocalDateTime data;
+
+    // Relacionamento 1:1
     @OneToOne
-    @JoinColumn(name = "cd_pedido")
+    @JoinColumn(name = "cd_pedido", nullable = false)
     private Pedido pedido;
 }

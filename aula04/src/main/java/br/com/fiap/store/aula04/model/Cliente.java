@@ -39,7 +39,9 @@ public class Cliente {
     private  String token;
     @Column(name = "nr_pontos", precision = 10)
     private Integer pontos;
-    @OneToMany(mappedBy = "cliente")
+
+    // Relacionamento 1:N (bidirecional)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Pedido> pedidos;
 
     // Cria um construtor que recebe o dto para cadastro

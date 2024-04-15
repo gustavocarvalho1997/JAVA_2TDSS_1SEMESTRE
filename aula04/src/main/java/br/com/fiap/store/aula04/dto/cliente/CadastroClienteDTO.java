@@ -9,12 +9,14 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
 public record CadastroClienteDTO(
-        @NotBlank(message = "Nome é obrigatório")
+        @NotBlank
         String nome,
-        @NotBlank(message = "CPF é obrigatório") @Size(min = 11, max = 11, message = "CPF deve ter 11 dígitos")
+        @NotBlank
+        @Size(max = 11, min = 11, message = "CPF deve conter 11 caracteres")
         String cpf,
-        @NotNull(message = "Data de nascimento é obrigatória") @Past(message = "Data de nascimento deve ser no passado")
+        @Past(message = "Data de nascimento deve estar no passado")
+        @NotNull
         LocalDate dataNascimento,
-        @NotNull(message = "Categoria é obrigatória")
+        @NotNull(message = "Categoria é obrigatório")
         CategoriaCliente categoria) {
 }

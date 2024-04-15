@@ -20,4 +20,12 @@ public class ProdutoPedido {
     private BigDecimal valor;
     @Column(name = "qt_produto_pedido", nullable = false)
     private Integer quantidade;
+
+    @ManyToOne
+    @JoinColumn(name = "cd_pedido", nullable = false)
+    private Pedido pedido;
+
+    @ManyToOne
+    @JoinColumn(name = "cd_produto", nullable = false)
+    private Produto produto;
 }

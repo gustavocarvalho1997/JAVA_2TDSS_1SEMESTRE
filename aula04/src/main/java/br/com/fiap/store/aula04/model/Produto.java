@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -39,8 +40,15 @@ public class Produto {
     @Column(name = "ds_estado", nullable = false, length = 30)
     @Enumerated(EnumType.STRING)
     private EstadoProduto estado;
-    @Transient
-    private Double precoComDesconto;
+
+    @OneToMany(mappedBy = "produto")
+    private List<ProdutoPedido> pedidos;
+
+    @ManyToMany
+    @JoinTable(name = "aula4_produto_fornecedor",
+            joinColumns = @JoinColumn(name = "cd_produto"),
+            inverseJoinColumns = @JoinColumn(name = "cd_fornecedor"))
+    private List<Fornecedor> fornecedores;
 
     public Produto(CadastroProdutoDTO dto){
         this.nome = dto.nome();

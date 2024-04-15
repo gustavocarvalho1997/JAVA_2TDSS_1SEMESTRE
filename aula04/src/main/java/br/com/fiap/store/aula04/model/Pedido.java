@@ -25,7 +25,8 @@ public class Pedido {
     @Column(name = "dt_pedido")
     @CreatedDate
     private LocalDateTime data;
-    @OneToOne(mappedBy = "pedido")
+    // cascade - realiza as ações em cascata, ou seja, se cadastrar/alterar/excluir o pedido, a nota fiscal também  pode sofrer a mesma alteração
+    @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)
     private NotaFiscal nf;
     @ManyToOne
     @JoinColumn(name = "cd_pedido")

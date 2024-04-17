@@ -1,5 +1,6 @@
 package br.com.fiap.exercicio.model;
 
+import br.com.fiap.exercicio.dto.CadastroPostDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,5 +39,11 @@ public class Post {
     // Relacionamento 1:N com a tabela Comentario
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comentario> comentarios;
+
+    // Criação
+    public Post(CadastroPostDTO dto) {
+        this.titulo = dto.titulo();
+        this.conteudo = dto.conteudo();
+    }
 
 }

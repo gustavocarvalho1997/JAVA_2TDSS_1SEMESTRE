@@ -11,4 +11,4 @@ public class ErrorHandler {
     public ResponseEntity<Void> error404(){
         return ResponseEntity.notFound().build();
     }
-}
+}// CLASS

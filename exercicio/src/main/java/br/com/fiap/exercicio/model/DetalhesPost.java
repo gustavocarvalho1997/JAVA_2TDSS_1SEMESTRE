@@ -1,5 +1,6 @@
 package br.com.fiap.exercicio.model;
 
+import br.com.fiap.exercicio.dto.CadastroPostDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,5 +35,10 @@ public class DetalhesPost {
     @OneToOne
     @JoinColumn(name = "cd_post", unique = true, nullable = false)
     private Post post;
+
+    public DetalhesPost(CadastroPostDTO dto){
+        nomeAutor = dto.nomeAutor();
+        dataPublicacao = dto.dataPublicacao();
+    }
 
 }

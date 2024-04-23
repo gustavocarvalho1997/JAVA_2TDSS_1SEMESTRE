@@ -1,5 +1,6 @@
 package br.com.fiap.exercicio.model;
 
+import br.com.fiap.exercicio.dto.AtualizacaoPostDTO;
 import br.com.fiap.exercicio.dto.CadastroPostDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -41,9 +42,21 @@ public class Post {
     private List<Comentario> comentarios;
 
     // Criação
-    public Post(CadastroPostDTO dto) {
-        this.titulo = dto.titulo();
-        this.conteudo = dto.conteudo();
+    public Post(CadastroPostDTO dto){
+        titulo = dto.titulo();
+        conteudo = dto.conteudo();
+        detalhesPost = new DetalhesPost(dto);
+        detalhesPost.setPost(this); //seta a FK da relação
+    }
+
+    // Atualizar
+    public void atualizarInformacoes(AtualizacaoPostDTO dto){
+        if(dto.titulo() != null){
+            this.titulo = dto.titulo();
+        }
+        if(dto.nomeAutor() != null){
+            this.detalhesPost.setNomeAutor(dto.nomeAutor());
+        }
     }
 
 }

@@ -1,5 +1,7 @@
 package br.com.fiap.exercicio.model;
 
+import br.com.fiap.exercicio.dto.CadastroComentarioDTO;
+import br.com.fiap.exercicio.dto.CadastroPostDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,5 +35,12 @@ public class Comentario {
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "cd_post", nullable = false)
     private Post post;
+
+    //Criação
+    public Comentario(CadastroComentarioDTO dto, Post post){
+        comentario = dto.conteudo();
+        autor = dto.autor();
+        this.post = post;
+    }
 
 }

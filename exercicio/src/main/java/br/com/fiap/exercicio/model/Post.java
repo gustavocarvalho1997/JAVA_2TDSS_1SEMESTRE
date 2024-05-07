@@ -52,8 +52,8 @@ public class Post {
         if (dto.titulo() != null){
             this.titulo = dto.titulo();
         }
-        if (dto.nomeAutor() != null){
-            this.detalhesPost.setNomeAutor(dto.nomeAutor());
+        if (dto.autor() != null){
+            this.detalhesPost.setNomeAutor(dto.autor());
         }
     }
 

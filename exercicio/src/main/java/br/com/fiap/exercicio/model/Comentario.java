@@ -2,6 +2,7 @@ package br.com.fiap.exercicio.model;
 
 import br.com.fiap.exercicio.dto.CadastroComentarioDTO;
 import br.com.fiap.exercicio.dto.CadastroPostDTO;
+import br.com.fiap.exercicio.dto.tag.CadastroTagDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

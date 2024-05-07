@@ -38,10 +38,9 @@ public class Post {
     private List<Tag> tags;
 
     // Relacionamento 1:N com a tabela Comentario
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<Comentario> comentarios;
 
-    // Criação
     public Post(CadastroPostDTO dto){
         titulo = dto.titulo();
         conteudo = dto.conteudo();
@@ -49,12 +48,11 @@ public class Post {
         detalhesPost.setPost(this); //seta a FK da relação
     }
 
-    // Atualizar
-    public void atualizarInformacoes(AtualizacaoPostDTO dto){
-        if(dto.titulo() != null){
+    public void atualizar(AtualizacaoPostDTO dto) {
+        if (dto.titulo() != null){
             this.titulo = dto.titulo();
         }
-        if(dto.nomeAutor() != null){
+        if (dto.nomeAutor() != null){
             this.detalhesPost.setNomeAutor(dto.nomeAutor());
         }
     }

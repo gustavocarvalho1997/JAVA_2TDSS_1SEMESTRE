@@ -1,5 +1,6 @@
 package br.com.fiap.exercicio.model;
 
+import br.com.fiap.exercicio.dto.tag.CadastroTagDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,4 +24,8 @@ public class Tag {
     // Relacionamento N:M com a tabela Post
     @ManyToMany(mappedBy = "tags")
     private List<Post> posts;
+
+    public Tag(CadastroTagDTO dto) {
+        this.nome = dto.nome();
+    }
 }
